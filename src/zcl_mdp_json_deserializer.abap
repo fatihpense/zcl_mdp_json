@@ -144,7 +144,7 @@ CLASS ZCL_MDP_JSON_DESERIALIZER IMPLEMENTATION.
 
     DATA : l_jsonnode TYPE REF TO zcl_mdp_json_node.
 
-    FIND REGEX '\{|\[|"|\d' IN SECTION OFFSET l_offset OF json
+    FIND REGEX '\{|\[|"|\d|t|f' IN SECTION OFFSET l_offset OF json
     MATCH OFFSET l_offset.
 
     CASE l_json+l_offset(1).
@@ -173,6 +173,43 @@ CLASS ZCL_MDP_JSON_DESERIALIZER IMPLEMENTATION.
         l_jsonnode->value = l_submatch .
 
         offset_after = l_offset + l_len.
+      WHEN 't'.
+        IF l_json+l_offset(4) = 'true'.
+          CREATE OBJECT l_jsonnode TYPE zcl_mdp_json_node EXPORTING json_type = zcl_mdp_json_node=>co_json_true.
+          l_jsonnode->value = l_json+l_offset(4).
+          offset_after = l_offset + 4.
+
+          IF co_debug_mode = 1.
+            WRITE: / 'true'  .
+          ENDIF.
+        ELSE.
+          RAISE EXCEPTION TYPE zcx_mdp_json_invalid.
+        ENDIF.
+
+      WHEN 'n'.
+        IF l_json+l_offset(4) = 'null'.
+          CREATE OBJECT l_jsonnode TYPE zcl_mdp_json_node EXPORTING json_type = zcl_mdp_json_node=>co_json_null.
+          l_jsonnode->value = l_json+l_offset(4).
+          offset_after = l_offset + 4.
+
+          IF co_debug_mode = 1.
+            WRITE: / 'null'  .
+          ENDIF.
+        ELSE.
+          RAISE EXCEPTION TYPE zcx_mdp_json_invalid.
+        ENDIF.
+      WHEN 'f'.
+        IF l_json+l_offset(5) = 'false'.
+          CREATE OBJECT l_jsonnode TYPE zcl_mdp_json_node EXPORTING json_type = zcl_mdp_json_node=>co_json_false.
+          l_jsonnode->value = l_json+l_offset(5).
+          offset_after = l_offset + 5.
+
+          IF co_debug_mode = 1.
+            WRITE: / 'false'  .
+          ENDIF.
+        ELSE.
+          RAISE EXCEPTION TYPE zcx_mdp_json_invalid.
+        ENDIF.
       WHEN OTHERS.
         FIND REGEX '\d+' IN SECTION OFFSET l_offset OF json
         MATCH OFFSET l_offset MATCH LENGTH l_len.
