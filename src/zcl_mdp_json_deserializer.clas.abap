@@ -39,13 +39,6 @@ ENDCLASS.
 CLASS ZCL_MDP_JSON_DESERIALIZER IMPLEMENTATION.
 
 
-* <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Static Public Method ZCL_MDP_JSON_DESERIALIZER=>DESERIALIZE
-* +-------------------------------------------------------------------------------------------------+
-* | [--->] JSON                           TYPE        STRING
-* | [<---] NODE                           TYPE REF TO ZCL_MDP_JSON_NODE
-* | [!CX!] ZCX_MDP_JSON_INVALID
-* +--------------------------------------------------------------------------------------</SIGNATURE>
   METHOD deserialize.
 
     DATA : l_jsonnode TYPE REF TO zcl_mdp_json_node.
@@ -61,15 +54,6 @@ CLASS ZCL_MDP_JSON_DESERIALIZER IMPLEMENTATION.
   ENDMETHOD.
 
 
-* <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Static Private Method ZCL_MDP_JSON_DESERIALIZER=>DESERIALIZE_ARRAY
-* +-------------------------------------------------------------------------------------------------+
-* | [--->] JSON                           TYPE        STRING
-* | [--->] OFFSET_BEFORE                  TYPE        I
-* | [<---] JSONNODE                       TYPE REF TO ZCL_MDP_JSON_NODE
-* | [<---] OFFSET_AFTER                   TYPE        I
-* | [!CX!] ZCX_MDP_JSON_INVALID
-* +--------------------------------------------------------------------------------------</SIGNATURE>
   METHOD deserialize_array.
     DATA l_json TYPE string.
     l_json = json.
@@ -123,15 +107,6 @@ CLASS ZCL_MDP_JSON_DESERIALIZER IMPLEMENTATION.
   ENDMETHOD.
 
 
-* <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Static Private Method ZCL_MDP_JSON_DESERIALIZER=>DESERIALIZE_NODE
-* +-------------------------------------------------------------------------------------------------+
-* | [--->] JSON                           TYPE        STRING
-* | [--->] OFFSET_BEFORE                  TYPE        I
-* | [<---] JSONNODE                       TYPE REF TO ZCL_MDP_JSON_NODE
-* | [<---] OFFSET_AFTER                   TYPE        I
-* | [!CX!] ZCX_MDP_JSON_INVALID
-* +--------------------------------------------------------------------------------------</SIGNATURE>
   METHOD deserialize_node.
 
     DATA l_json TYPE string.
@@ -226,15 +201,6 @@ CLASS ZCL_MDP_JSON_DESERIALIZER IMPLEMENTATION.
   ENDMETHOD.
 
 
-* <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Static Private Method ZCL_MDP_JSON_DESERIALIZER=>DESERIALIZE_OBJECT
-* +-------------------------------------------------------------------------------------------------+
-* | [--->] JSON                           TYPE        STRING
-* | [--->] OFFSET_BEFORE                  TYPE        I
-* | [<---] JSONNODE                       TYPE REF TO ZCL_MDP_JSON_NODE
-* | [<---] OFFSET_AFTER                   TYPE        I
-* | [!CX!] ZCX_MDP_JSON_INVALID
-* +--------------------------------------------------------------------------------------</SIGNATURE>
   METHOD deserialize_object.
     DATA l_json TYPE string.
     l_json = json.

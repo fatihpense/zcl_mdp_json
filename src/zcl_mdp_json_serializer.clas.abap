@@ -28,12 +28,6 @@ ENDCLASS.
 CLASS ZCL_MDP_JSON_SERIALIZER IMPLEMENTATION.
 
 
-* <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Static Public Method ZCL_MDP_JSON_SERIALIZER=>SERIALIZE
-* +-------------------------------------------------------------------------------------------------+
-* | [--->] NODE                           TYPE REF TO ZCL_MDP_JSON_NODE
-* | [<---] JSON                           TYPE        STRING
-* +--------------------------------------------------------------------------------------</SIGNATURE>
   METHOD serialize.
 
 
@@ -48,23 +42,11 @@ CLASS ZCL_MDP_JSON_SERIALIZER IMPLEMENTATION.
   ENDMETHOD.
 
 
-* <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Static Private Method ZCL_MDP_JSON_SERIALIZER=>SERIALIZE_ARRAY
-* +-------------------------------------------------------------------------------------------------+
-* | [--->] JSONNODE                       TYPE REF TO ZCL_MDP_JSON_NODE
-* | [<---] JSON                           TYPE        STRING
-* +--------------------------------------------------------------------------------------</SIGNATURE>
   METHOD serialize_array.
 
   ENDMETHOD.
 
 
-* <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Static Private Method ZCL_MDP_JSON_SERIALIZER=>SERIALIZE_NODE
-* +-------------------------------------------------------------------------------------------------+
-* | [--->] JSONNODE                       TYPE REF TO ZCL_MDP_JSON_NODE
-* | [<---] JSON                           TYPE        STRING
-* +--------------------------------------------------------------------------------------</SIGNATURE>
   METHOD serialize_node.
     DATA l_json TYPE string.
     DATA : l_index TYPE i VALUE 0.
@@ -134,12 +116,6 @@ CLASS ZCL_MDP_JSON_SERIALIZER IMPLEMENTATION.
   ENDMETHOD.
 
 
-* <SIGNATURE>---------------------------------------------------------------------------------------+
-* | Static Private Method ZCL_MDP_JSON_SERIALIZER=>SERIALIZE_OBJECT
-* +-------------------------------------------------------------------------------------------------+
-* | [--->] JSONNODE                       TYPE REF TO ZCL_MDP_JSON_NODE
-* | [<---] JSON                           TYPE        STRING
-* +--------------------------------------------------------------------------------------</SIGNATURE>
   METHOD serialize_object.
 
   ENDMETHOD.
