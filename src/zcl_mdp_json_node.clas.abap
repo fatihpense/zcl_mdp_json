@@ -83,7 +83,9 @@ CLASS ZCL_MDP_JSON_NODE IMPLEMENTATION.
 
   METHOD array_get_child_node.
 
-    node = me->array_children[  index  ]-node .
+	DATA ls_array TYPE typ_array_children.
+	READ TABLE me->array_children INTO ls_array INDEX index.
+	node = ls_array-node .
 
   ENDMETHOD.
 
@@ -173,7 +175,9 @@ CLASS ZCL_MDP_JSON_NODE IMPLEMENTATION.
 
   METHOD object_get_child_node.
 
-    node = me->object_children[ key = key  ]-node .
+	DATA ls_object TYPE typ_object_children.
+	READ TABLE me->object_children INTO ls_object WITH key key = key.
+	node = ls_object-node .
 
   ENDMETHOD.
 
